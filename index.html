@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Express - Home</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <div class="logo-container">
+      <img src="images/logo.png" class="logo" alt="Food Logo">
+    </div>
+    <div class="title-nav">
+      <h1 class="site-title">Food Express</h1>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="order.html">Order</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero-slider">
+  <div class="slider-container">
+    <div class="slide active">
+      <img src="images/pizza.jpg" alt="Pizza 1">
+      <div class="hero-text">
+        <h2>Hot & Fresh Pizza at Your Doorstep</h2>
+        <a href="menu.html" class="btn">Order Now</a>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/burger2.jpg" alt="Burger">
+      <div class="hero-text">
+        <h2>Juicy Burgers, Fast Delivery</h2>
+        <a href="menu.html" class="btn">Order Now</a>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/pizza2.jpg" alt="Pizza 2">
+      <div class="hero-text">
+        <h2>Delicious Food Delivered Fast</h2>
+        <a href="menu.html" class="btn">Order Now</a>
+      </div>
+    </div>
+
+    <!-- Arrows -->
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Food Express</p>
+</footer>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const nextBtn = document.querySelector('.next');
+  const prevBtn = document.querySelector('.prev');
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      if (i === index) slide.classList.add('active');
+    });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  // Auto-slide every 5 seconds
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 5000);
+</script>
+
+</body>
+</html>
